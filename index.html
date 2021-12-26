@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.    com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">  
+  <title>Guide</title>
+</head>
+<body >
+
+  <div class="wrapper">
+
+  
+  <nav id="navbar">
+    <header>
+      Ghost Guide!
+    </header>
+    <br>    
+
+      <li><a href="#Ghost_Setup_with_the_Digital_Ocean_Droplet" class="nav-link">Ghost Setup with the Digital Ocean Droplet</a></li>
+      <li><a href="#Setting_up_the_Digital_Ocean_Droplet" class="nav-link">Setting up the Digital Ocean Droplet</a></li>
+      <li><a href="#Installing_Ghost" class="nav-link">Installing Ghost</a></li>
+      <li><a href="#Connecting_to_Custom_Domain_to_Ghost" class="nav-link">Connecting to Custom Domain to Ghost</a></li>
+      <li><a href="#Getting_Started_with_Ghost_Customization" class="nav-link">Getting Started with Ghost Customization</a></li>
+      <li><a href="#Ghost_Themes" class="nav-link">Ghost Themes</a></li>
+      <li><a href="#Tags" class="nav-link">Tags</a></li>
+      <li><a href="#Additional_Styling" class="nav-link">Additional Styling</a></li>
+      <li> <a href="#Integrations" class="nav-link">Integrations</a></li>
+      <li> <a href="#Reference" class="nav-link">Reference</a></li>
+  
+  </nav>
+
+  <main id="main-doc">
+     
+    <section class="main-section" id="Ghost_Setup_with_the_Digital_Ocean_Droplet">
+      <header>Ghost Setup with the Digital Ocean Droplet</header>
+      <article>
+
+        <p> Please note that this section will go through a step-by-step process of setting up self-hosted Ghost for domains (ex: domain.xyz) or subdomains (ex: blog.domain.xyz), but not subdirectories (domain.xyz/blog). There are additional steps that will not be covered in this article related to subdirectories.</p>
+      </article>
+      <code></code>
+    </section>
+    
+    <section class="main-section" id="Setting_up_the_Digital_Ocean_Droplet">
+      <header>Setting up the Digital Ocean Droplet</header>
+      <p>
+        <ol>
+          <li>The first step to setting up Ghost is hopping over to the Digital Ocean Marketplace. Search for “Ghost” and navigate to the Ghost droplet page. If you’re signed in, you can also find this in the platform by navigating to “Marketplace” in the left-hand navigation.</li>
+
+          <li>Click “Create Ghost Droplet”. This is the “Digital Ocean One Click” setup that will build and launch a server just for you!</li>
+
+          <li>Prior to creation, Digital Ocean will bring you to a page where you need to choose your droplet size. I would recommend that you start at the lowest tier which is: Standard $5/month. Note that this option doesn’t show up immediately, so you’ll need to navigate to the left to find it. Unless you already have a huge blog, I would not be concerned about traffic or the server holding up. My $5/month droplet held up with an article trending across the top of Hacker News for over 24h with hundreds of active readers and absolutely no glitches.</li>
+
+         <li>    As for the other setup conditions, you can enable these at your discretion and are mostly optional. You will need to choose your data center region, which should be closest to where you expect most of your users/readers are. I did not select any additional add-ons or SSH key, as it’s not mandatory for set-up and my routing is done through Cloudflare which provides my security layer.</li>
+          
+          <li>
+
+          Once you’ve selected a name for your droplet (this can be anything), Digital Ocean will take a couple minutes to create the droplet. Once the droplet is created, you should see an IP address (for example: 134.209.253.151).
+
+          </li>
+
+          <li>If you navigate to that IP in your browser, you’ll see the below view of the Ghost Installation page, which means the droplet is set up and hosted by Digital Ocean at that IP address. If you don’t see this page, the droplet has not been set up properly. If you do see this page, you’ve set up your droplet and can now connect it to a domain!</li>
+
+        </ol>
+      </p>
+      <code></code>
+    </section>
+    
+    <section class="main-section" id="Connecting_to_Custom_Domain_to_Ghost">
+      <header>Connecting to Custom Domain to Ghost</header>
+      <li>
+        First, you’ll need to add the domain to Digital Ocean and set up your Digital Ocean DNS records. To do so, click the right-hand toggle to “Add a domain”.
+      </li>
+      <li>
+        Type your domain name in the input field and then click “Add Domain”. You should see DNS records populate similar to the below.
+      </li>
+      
+      <li>Once you’ve set up your DNS records on both ends, they may take some time to propagate. Some third parties indicate that it can take up to 48 hours, but normally this happens within minutes.</li>
+      
+      <code></code>
+    </section>
+    
+    <section class="main-section" id="Installing_Ghost">
+      <header>Installing Ghost</header>
+      <p>
+        <li>The final section of this 3-step installation process is to install the Ghost software. To do so, hop back into Digital Ocean and open the console over on the right-hand side. This should open the console in a new tab that is requesting a login.</li>
+        
+        <li>
+          Enter your username (always “root”) and then the password sent to you by email from Digital Ocean, when you initiated the droplet.
+        </li>
+        <li>The terminal will then prompt you to update your password immediately. This is mandatory.  It’ll first prompt you to enter your current UNIX password (same as password in your email) and then add a new password twice. If this is done correctly, you should see the installation initialize and after a few seconds, you should see the below screen.</li>
+        <li>
+          To ensure that everything is set up properly, you can now go to your domain or subdomain and you should see a basic blog template from Ghost (example below). Note that if you’re routing through Cloudflare and you’re getting problems related to routing or too many redirects, you may be having problems related to your SSL. I was able to fix this in the Crypto tab, by setting SSL from Flexible to Full.
+        </li>
+        <li>
+          Now, if you navigate to your domain.xyz/ghost or the subdomain.domain.xyz/ghost, you should see the setup page.
+        </li>
+      </p>
+      <code></code>
+    </section>
+    
+    
+    <section class="main-section" id="Getting_Started_with_Ghost_Customization">
+      <header>Getting Started with Ghost Customization</header>
+      <p>
+        In your portal, there are multiple tabs in the left-hand sidebar which allow you to further customize you blog. I’ll be going through some tips across each one of these below.
+      </p>
+
+       General 
+
+      <p>
+        In this tab, you’ll enter a pretty standard set of information including your publication name, cover, logo (favicon), timezone, and more. Don’t forget to update your social accounts! I forgot to do this at first and had the Ghost social accounts as my default for over a week.
+        
+        Another thing worth noting is that Ghost automatically adds a filter over cover images that are on the lighter end, in order for the text to show up clearly. You can edit this later in the code injection section.</p>
+
+       Navigation 
+      <br>
+      <p>The navigation section is pretty straight-forward and allows you to set up your navigation bar, which is present on all pages of your blog. You’re able to set up links to any pages, whether internal or external to your blog, but most people utilize this to navigate to tags/category pages.</p>
+
+      <code></code>
+    </section>
+    
+    <section class="main-section" id="Ghost_Themes">
+      <header>Ghost Themes</header>
+      <p>
+        For those of you who also don’t want to edit an entire template, you do have the option to explore the Ghost theme marketplace. There are a couple dozen paid Ghost themes ranging from $19-$59, in addition to six free themes:
+      </p>
+        <ul>
+            <li>Casper (this blog)</li>
+            <li>Massively</li>
+            <li>London</li>
+            <li>Editorial</li>
+            <li>Zvikov</li>
+            <li>Attila</li>
+        </ul>
+      <code></code>
+    </section>
+    <section class="main-section" id="Tags">
+      <header>Tags</header>
+      <p>You’ll need to select tags for your articles. These will be the categories which:
+       <ol>
+
+         <li>
+           Articles are grouped by
+          </li>
+
+          <li>
+            Can be added to your navigation bar  
+          </li>
+        </ol>
+        You can add as many tags as you would like, along with a unique URL and description. For example, here is the Remote Work category for my blog. You’ll also be able to set up meta data, which is the information that will appear when the page is shared or shows up in search results.
+
+        I personally chose to select the same background image for all of my category pages. Instead of uploading them individually, I decided to set the image globally using CSS in the code injection section of the platform.
+      </p>
+      <code>
+        .site-header {
+          background-image: -webkit-image-set(
+              url(https://images.unsplash.com/photo-1501769214405-5e5ee5125a02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=998&q=80) 1x,
+              url(https://images.unsplash.com/photo-1501769214405-5e5ee5125a02?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=998&q=80) 2x
+          )}  
+      </code>
+       
+        Code Injection
+       
+
+      <p>
+        Speaking of code injection, there are a few other ways to customize your design without directly editing the theme, but styling or adding scripts in your header/footer. Here are some things that I’ve chosen to do with code injection.
+      </p>
+
+    </section>
+    <section class="main-section" id="Additional_Styling">
+      <header>Additional Styling</header>
+      
+     <p>Most elements can be styled with custom CSS. In order to determine what class or ID an element has, simply inspect the element and utilize that to modify with a style tag in the header.</p>
+
+     <pre>
+         <code>
+            /* Styling the trust bar */
+                .trust-img{
+                    height: 20px;
+                    margin: 0 5px;
+                }
+                .trust-img:hover {
+              height:22px;
+              opacity: 0.8;
+              }
+                #trustbar{
+                    text-align: center;
+                    padding: 20px 0;
+                }
+            
+            /* Editing styles for description and nav bar */
+                .site-description
+                {
+                    font-weight: 500 !important;
+                }    
+                .site-nav {
+                    font-weight: 800 !important;
+                    text-shadow: 1px 1px rgba(0,0,0,0.3) !important;
+                }    
+            
+            /* Editing colour of bottom footer */
+               .site-footer {
+                   background-color: rgb(245, 248, 251);
+                }
+                .site-footer-content, .site-footer-content a {
+                    color: grey;
+                }
+                
+                
+            /* Editing filter over cover image */
+                .site-header:before{
+                    background: rgba(0, 122, 237, 0.23);
+                }
+
+        </code>
+       </pre>
+
+    </section>
+
+    <section class="main-section" id="Integrations"> 
+      <header>Integrations</header>
+      <p>
+
+        Ghost contains built-in support for direct integration with over 1,000+ apps and services.
+        <br>
+
+        Ghost is known for being developer friendly and that includes easy access to integrations. In the Integrations tab, you can find a suite of Integrations. Feel free to explore them yourself, but I would specifically encourage you to set up the Integration with Zapier, which helps you “zap” any new subscribers from Ghost straight to your third-party list (ex: MailChimp). Simply click to configure the Zap and you will be brought straight to Zapier to set this up. Once set up, your set of steps should look something like this.
+    
+      </p>
+
+    </section>
+    <section class="main-section" id="Reference">
+      <header>Reference</header>
+        <p>
+          <li>
+            All the documentation in this page is taken from <a target="_blank" id="link" href="https://blog.stephsmith.io/setting-up-blog-with-ghost-and-digital-ocean-droplet/" >Steph↗</a> who is growth marketer, writer, and indie maker.
+          </li>
+
+          <li>
+            For more information check out also <a id="link" href="https://ghost.org/docs/" target="_blank" rel="noopener noreferrer">Ghost Official website ↗</a> for full guide.
+          </li>
+        </p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <button id="scrollToTopBtn">☝</button>
+</footer>
+<script src="script.js"></script>
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+</body>
+</html>
